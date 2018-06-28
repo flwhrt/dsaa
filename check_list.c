@@ -1,7 +1,7 @@
 #include <check.h>
 #include <stdlib.h>
 
-#include "list.c"
+#include "list.h"
 
 //	struct node *list;
 //
