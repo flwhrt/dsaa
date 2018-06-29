@@ -27,8 +27,13 @@ START_TEST(test_isEmpty) {
 	struct node *list;
 
 	list = createList();
-
 	fail_unless(isEmpty(list), "list不为空");
+
+	list->next = malloc(sizeof(struct node));
+	list->next->val = 5;
+	list->next->next = NULL;
+	fail_unless(!isEmpty(list), "list isEmpty fail");
+	
 }
 
 END_TEST
