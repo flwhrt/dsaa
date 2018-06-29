@@ -142,6 +142,21 @@ START_TEST(test_makeEmpty) {
 }
 END_TEST
 
+START_TEST(test_deleteList) {
+	struct node *list, *first;
+
+	list = createList();
+
+	first = malloc(sizeof(struct node));
+	first->val = 5;
+	first->next = NULL;
+	list->next = first;
+
+	deleteList(list);
+	// TODO 怎样测试
+}
+END_TEST
+
 Suite *make_list_suite(void) {
 	Suite *s = suite_create("list");
 	TCase *c = tcase_create("list");
@@ -154,6 +169,7 @@ Suite *make_list_suite(void) {
 	tcase_add_test(c, test_delete);
 	tcase_add_test(c, test_insert);
 	tcase_add_test(c, test_makeEmpty);
+	tcase_add_test(c, test_deleteList);
 	return s;
 }
 

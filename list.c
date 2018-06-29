@@ -78,6 +78,8 @@ void insert(int val, struct node *list, struct node *position)
 
 void deleteList(struct node *list)
 {
+	makeEmpty(list);
+	free(list);
 }
 
 struct node *header(struct node *list)
