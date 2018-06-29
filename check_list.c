@@ -126,6 +126,22 @@ START_TEST(test_insert) {
 }
 END_TEST
 
+START_TEST(test_makeEmpty) {
+	struct node *list, *first, *second;
+
+	list = createList();
+
+	first = malloc(sizeof(struct node));
+	first->val = 5;
+	first->next = NULL;
+	list->next = first;
+
+	makeEmpty(list);
+	fail_unless(list->next == NULL, "list makeEmpty fail");
+	fail_unless(list != NULL, "list makeEmpty fail");
+}
+END_TEST
+
 Suite *make_list_suite(void) {
 	Suite *s = suite_create("list");
 	TCase *c = tcase_create("list");
@@ -137,6 +153,7 @@ Suite *make_list_suite(void) {
 	tcase_add_test(c, test_findPrevious);
 	tcase_add_test(c, test_delete);
 	tcase_add_test(c, test_insert);
+	tcase_add_test(c, test_makeEmpty);
 	return s;
 }
 

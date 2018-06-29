@@ -16,7 +16,12 @@ struct node *createList()
 
 struct node *makeEmpty(struct node *list)
 {
-	return NULL;
+	if (!isLast(list->next, list)) {
+		makeEmpty(list->next);
+	}
+	free(list->next);
+	list->next = NULL;
+	return list;
 }
 
 int isEmpty(struct node *list)
