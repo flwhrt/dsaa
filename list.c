@@ -11,17 +11,10 @@ struct node *createList()
 {
 
 	struct node *list;
-	struct node *lastNode;
 
 	list = malloc(sizeof(struct node));
-	list->val = 5;
+	list->val = 0;
 	list->next = NULL;
-	lastNode = list;
-
-	lastNode->next = malloc(sizeof(struct node));
-	lastNode = lastNode->next;
-	lastNode->val = 6;
-	lastNode->next = NULL;
 
 	return list;
 }
@@ -33,7 +26,7 @@ struct node *makeEmpty(struct node *list)
 
 int isEmpty(struct node *list)
 {
-	return list == NULL;
+	return list->next == NULL;
 }
 
 int isLast(struct node *position, struct node *list)
