@@ -89,7 +89,7 @@ struct node *header(struct node *list)
 
 struct node *first(struct node *list)
 {
-	return NULL;
+	return list->next;
 }
 
 struct node *advance(struct node *position)
