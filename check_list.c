@@ -19,6 +19,7 @@ START_TEST(test_createList) {
 	list = createList();
 
 	fail_unless(list != NULL, "createList fail");
+	fail_unless(list->next == NULL, "createList 指针未初始化为空");
 }
 END_TEST
 
@@ -27,7 +28,7 @@ START_TEST(test_isEmpty) {
 
 	list = createList();
 
-	fail_unless(!isEmpty(list), "isEmpty fail");
+	fail_unless(isEmpty(list), "list不为空");
 }
 
 END_TEST
