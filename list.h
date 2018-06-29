@@ -1,7 +1,11 @@
 #ifndef LIST_H
 #define LIST_H
 
-struct node;
+struct node {
+	int val;
+	struct node *next;
+};
+
 
 struct node *createList();
 struct node *makeEmpty(struct node *list);
