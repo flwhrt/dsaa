@@ -3,15 +3,6 @@
 
 #include "list.h"
 
-//	struct node *list;
-//
-//	list = NULL;
-//	list = createList();
-//	printf("values of val are: %d, %d\n", list->val, list->next->val);
-//	printf("is last? %d\n", isLast(list->next, list));
-//
-//	printf("address are %p, %p\n", list, list->next);
-//	printf("address of %d is %p\n", 8, find(8, list));
 
 START_TEST(test_createList) {
 	struct node *list;
@@ -70,6 +61,27 @@ START_TEST(test_find) {
 }
 END_TEST
 
+START_TEST(test_findPrevious) {
+	struct node *list, *last;
+
+	list = createList();
+	last = list;
+	last->next = malloc(sizeof(struct node));
+	last = last->next;
+	last->val = 5;
+	last->next = NULL;
+
+	last->next = malloc(sizeof(struct node));
+	last = last->next;
+	last->val = 6;
+	last->next = NULL;
+
+	fail_unless(NULL != findPrevious(6, list)->next, "list find fail");
+	fail_unless(NULL == findPrevious(1000, list)->next, "list find fail");
+
+}
+END_TEST
+
 Suite *make_list_suite(void) {
 	Suite *s = suite_create("list");
 	TCase *c = tcase_create("list");
@@ -78,6 +90,7 @@ Suite *make_list_suite(void) {
 	tcase_add_test(c, test_isEmpty);
 	tcase_add_test(c, test_isLast);
 	tcase_add_test(c, test_find);
+	tcase_add_test(c, test_findPrevious);
 	return s;
 }
 

@@ -54,7 +54,12 @@ void delete(int val, struct node *list)
 
 struct node *findPrevious(int val, struct node *list)
 {
-	return NULL;
+	struct node *p;
+
+	p = list;
+	while (p->next != NULL && p->next->val != val)
+		p = p->next;
+	return p;
 }
 
 void insert(int val, struct node *list, struct node *position)
