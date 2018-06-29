@@ -35,7 +35,18 @@ START_TEST(test_isEmpty) {
 	fail_unless(!isEmpty(list), "list isEmpty fail");
 	
 }
+END_TEST
 
+START_TEST(test_isLast) {
+	struct node *list;
+
+	list = createList();
+	list->next = malloc(sizeof(struct node));
+	list->next->val = 5;
+	list->next->next = NULL;
+	fail_unless(isLast(list->next, list), "list isLast fail");
+
+}
 END_TEST
 
 Suite *make_list_suite(void) {
@@ -44,6 +55,7 @@ Suite *make_list_suite(void) {
 	suite_add_tcase(s, c);
 	tcase_add_test(c, test_createList);
 	tcase_add_test(c, test_isEmpty);
+	tcase_add_test(c, test_isLast);
 	return s;
 }
 
