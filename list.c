@@ -41,14 +41,13 @@ struct node *find(int val, struct node *list)
 
 void delete(int val, struct node *list)
 {
-	struct node *pre, *temp;
+	struct node *previous, *target;
 
-	pre = findPrevious(val, list);
-
-	if (pre != NULL) {
-		temp = pre->next;
-		pre->next = temp->next;
-		free(temp);
+	previous = findPrevious(val, list);
+	if (!isLast(previous, list)) {
+		target = previous->next;
+		previous->next = target->next;
+		free(target);
 	}
 }
 
