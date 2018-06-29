@@ -63,6 +63,12 @@ struct node *findPrevious(int val, struct node *list)
 
 void insert(int val, struct node *list, struct node *position)
 {
+	struct node *target;
+
+	target = malloc(sizeof(struct node));
+	target->val = val;
+	target->next = position->next;
+	position->next = target;
 }
 
 void deleteList(struct node *list)

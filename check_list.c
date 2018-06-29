@@ -104,6 +104,28 @@ START_TEST(test_delete) {
 }
 END_TEST
 
+START_TEST(test_insert) {
+	struct node *list, *first, *second;
+
+	list = createList();
+
+	first = malloc(sizeof(struct node));
+	first->val = 5;
+	first->next = NULL;
+	list->next = first;
+
+	second = malloc(sizeof(struct node));
+	second->val = 6;
+	second->next = NULL;
+	first->next = second;
+
+	insert(7, list, first);
+	fail_unless(first->next == find(7, list), "list delete fail");
+	fail_unless(find(7, list)->next == second , "list delete fail");
+
+}
+END_TEST
+
 Suite *make_list_suite(void) {
 	Suite *s = suite_create("list");
 	TCase *c = tcase_create("list");
@@ -114,6 +136,7 @@ Suite *make_list_suite(void) {
 	tcase_add_test(c, test_find);
 	tcase_add_test(c, test_findPrevious);
 	tcase_add_test(c, test_delete);
+	tcase_add_test(c, test_insert);
 	return s;
 }
 
