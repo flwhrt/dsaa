@@ -33,7 +33,7 @@ struct node *find(int val, struct node *list)
 {
 	struct node *p;
 
-	p = list;
+	p = list->next;
 	while (p != NULL && p->val != val)
 		p = p->next;
 	return p;
