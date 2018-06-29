@@ -157,6 +157,18 @@ START_TEST(test_deleteList) {
 }
 END_TEST
 
+START_TEST(test_header) {
+	struct node *list;
+
+	list = createList();
+	list->next = malloc(sizeof(struct node));
+	list->next->val = 5;
+	list->next->next = NULL;
+	fail_unless(list == header(list), "list header fail");
+	
+}
+END_TEST
+
 Suite *make_list_suite(void) {
 	Suite *s = suite_create("list");
 	TCase *c = tcase_create("list");
@@ -170,6 +182,7 @@ Suite *make_list_suite(void) {
 	tcase_add_test(c, test_insert);
 	tcase_add_test(c, test_makeEmpty);
 	tcase_add_test(c, test_deleteList);
+	tcase_add_test(c, test_header);
 	return s;
 }
 

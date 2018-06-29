@@ -84,7 +84,7 @@ void deleteList(struct node *list)
 
 struct node *header(struct node *list)
 {
-	return NULL;
+	return list;
 }
 
 struct node *first(struct node *list)
