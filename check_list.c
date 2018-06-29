@@ -136,6 +136,11 @@ START_TEST(test_makeEmpty) {
 	first->next = NULL;
 	list->next = first;
 
+	second = malloc(sizeof(struct node));
+	second->val = 6;
+	second->next = NULL;
+	first->next = second;
+
 	makeEmpty(list);
 	fail_unless(list->next == NULL, "list makeEmpty fail");
 	fail_unless(list != NULL, "list makeEmpty fail");
