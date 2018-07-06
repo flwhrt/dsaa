@@ -1,7 +1,13 @@
 
 CFLAGS = -Wall
 
-list.o : list.h
+build : list.o stack.o stack1.o queue.o tree.o
+
+list.o :
+stack.o :
+stack1.o :
+queue.o :
+tree.o :
 
 check_list.o : check_list.c
 	cc -c -Wall -lcheck check_list.c
