@@ -1,6 +1,7 @@
 
-list.o : list.c list.h
-	cc -c -Wall list.c
+CFLAGS = -Wall
+
+list.o : list.h
 
 check_list.o : check_list.c
 	cc -c -Wall -lcheck check_list.c
