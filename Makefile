@@ -1,6 +1,7 @@
 
 CFLAGS = -Wall
 
+.PHONY : build
 build : list.o stack.o stack1.o queue.o tree.o
 
 list.o :
