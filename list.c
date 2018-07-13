@@ -16,11 +16,12 @@ struct node *createList()
 
 struct node *makeEmpty(struct node *list)
 {
-	if (!isLast(list->next, list)) {
-		makeEmpty(list->next);
+	struct node *tmp;
+
+	while((tmp = list->next) != NULL) {
+		list->next = tmp->next;
+		free(tmp);
 	}
-	free(list->next);
-	list->next = NULL;
 	return list;
 }
 
